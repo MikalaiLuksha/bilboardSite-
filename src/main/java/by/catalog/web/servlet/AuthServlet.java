@@ -14,5 +14,7 @@ public class AuthServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
+
+        getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
     }
 }
