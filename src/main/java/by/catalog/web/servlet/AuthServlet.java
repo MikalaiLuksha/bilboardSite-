@@ -21,12 +21,14 @@ public class AuthServlet extends HttpServlet {
         User currentUser = userService.getUserByLoginAndPassword(login, password);
         if (currentUser != null) {
             req.getSession().setAttribute("currentUser", currentUser);
+            req.setAttribute("key1", true);
             req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
         }
         else {
             String checkAuth = userService.checkLoginAndPassword(login, password);
+            req.getSession().setAttribute("check", true);
             req.getSession().setAttribute("checkAuth", checkAuth);
-            req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
         }
     }
 }

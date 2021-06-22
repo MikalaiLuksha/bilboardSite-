@@ -27,7 +27,5 @@ public class RegServlet extends HttpServlet {
         UserService userService = new UserService();
         userService.saveUser(firstName, lastName, password, login, Role.user.toString());
         getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
-
-
             }
 }
