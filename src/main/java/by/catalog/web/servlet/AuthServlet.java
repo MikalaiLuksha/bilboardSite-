@@ -1,5 +1,8 @@
 package by.catalog.web.servlet;
 
+import by.catalog.entity.User;
+import by.catalog.service.UserService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +17,16 @@ public class AuthServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-
-        getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
+        UserService userService = new UserService();
+        User currentUser = userService.getUserByLoginAndPassword(login, password);
+        if (currentUser != null) {
+            req.getSession().setAttribute("currentUser", currentUser);
+            req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
+        }
+        else {
+            String checkAuth = userService.checkLoginAndPassword(login, password);
+            req.getSession().setAttribute("checkAuth", checkAuth);
+            req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
+        }
     }
 }
