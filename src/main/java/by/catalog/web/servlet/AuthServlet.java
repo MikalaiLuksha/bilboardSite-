@@ -22,6 +22,9 @@ public class AuthServlet extends HttpServlet {
         if (currentUser != null) {
             req.getSession().setAttribute("currentUser", currentUser);
             req.setAttribute("key1", true);
+            if (currentUser.getRole().equals("admin")){
+                req.getSession().setAttribute("admin", true);
+            }
             req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
         }
         else {

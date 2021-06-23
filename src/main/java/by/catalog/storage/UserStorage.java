@@ -3,6 +3,8 @@ package by.catalog.storage;
 import by.catalog.entity.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserStorage {
 
@@ -14,6 +16,7 @@ public class UserStorage {
 
     private final static String ADD_USER = "insert into userdata (id, firstname, lastname, login, password, role) values (default , ?, ?, ?, ?, ?)";
     private final static String GET_USER_BY_LOGIN = "select * from userdata s where s.login = ?";
+    private final static String GET_ALL_USER = "select * from userdata";
 
     static {
         try {
@@ -58,4 +61,29 @@ public class UserStorage {
         }
         return null;
     }
+
+    public List<User> getAllUser() {
+        List<User> userList = new ArrayList<>();
+        try {
+            connection = DriverManager.getConnection(URL_TABLES, LOGIN_TABLES, PASS_TABLES);
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USER);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                long id = resultSet.getLong(1);
+                String firstName = resultSet.getString(2);
+                String lastName = resultSet.getString(3);
+                String login = resultSet.getString(4);
+                String password = resultSet.getString(5);
+                String role = resultSet.getString(6);
+                userList.add(new User(id, firstName, lastName, login, password, role));
+            }
+            connection.close();
+            return userList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
+

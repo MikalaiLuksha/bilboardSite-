@@ -7,13 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/createBoard")
+public class CreateBoardServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().removeAttribute("currentUser");
-        req.getSession().setAttribute("admin", false);
-        resp.sendRedirect("/");
+        req.getServletContext().getRequestDispatcher("/pages/createBoard.jsp").forward(req, resp);
     }
 }
