@@ -3,6 +3,7 @@ package by.catalog.service;
 import by.catalog.entity.User;
 import by.catalog.storage.UserStorage;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class UserService {
@@ -32,6 +33,15 @@ public class UserService {
 
     public List<User> allUsersList(){
         return userStorage.getAllUser();
+    }
+
+    public long[] userIdFromCreateBoard (String[] arrayId){
+        long[] arrayLong = new long[arrayId.length];
+        for (int i = 0; i < arrayId.length; i++) {
+            long l = Long.parseLong(arrayId[i]);
+            arrayLong[i] = l;
+        }
+        return arrayLong;
     }
 }
 
