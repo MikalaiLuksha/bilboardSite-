@@ -1,5 +1,6 @@
 package by.catalog.web.servlet;
 
+import by.catalog.entity.Board;
 import by.catalog.entity.User;
 import by.catalog.service.UserService;
 
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/createBoard")
@@ -25,11 +28,20 @@ public class CreateBoardServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String[] userPerformers = req.getParameterValues("userPerformer");
-        String s = userPerformers.toString();
+        String join = String.join(" ", userPerformers);
+//        String[] userIdArray = join.split(" ");
+        Date date= new Date();
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
         long[] longs = userService.userIdFromCreateBoard(userPerformers);
-        long[] longs1 = longs;
         String task = req.getParameter("task");
-        String task1 = task;
+        Board board = new Board(task, longs);
+        board.setAddDate(calendar);
+        Board board1 = board;
+        String string = board.getAddDate().toString();
+        String string1 = string;
+
     }
+
 }
 

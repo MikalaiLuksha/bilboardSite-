@@ -6,15 +6,24 @@
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
 <head>
+    <nav class="navbar navbar-light" style="background-color: #f4ac63; height: 55px">
 
+        <div class="row ">
+            <div class="col-md-3 offset-md-3">
+                <p>
+                    <a class="btn btn-primary" href="/" role="button">Return</a>
+                </p>
+            </div>
+        </div>
+    </nav>
 </head>
+
 <body>
 <form action="/createBoard" method="post">
 
     <div class="dropdown mt-2">
-        <label for="appl" class="offset-sm-2 text-light"> Performer </label>
-        <br><button class="btn btn-light dropdown-toggle offset-sm-2" type="button" id="appl" data-toggle="dropdown">
-        Selected <span class="caret"></span>
+        <br><button class="btn btn-primary dropdown-toggle offset-sm-2" type="button" id="appl" data-toggle="dropdown">
+        Performer  <span class="caret"></span>
     </button><br>
         <ul class="dropdown-menu">
             <li class="dropdown-input offset-sm-1"><label><input type="checkbox" name="userPerformer" value="-1"> All </label></li>
@@ -26,7 +35,7 @@
 
     <div class="form-group text-light">
         <label for="Task1" class="offset-sm-2">Task</label>
-        <textarea class="form-control col-4 offset-sm-2" id="Task1" name="task" rows="3"></textarea>
+        <textarea class="form-control w-50 offset-sm-2" id="Task1" name="task" rows="3"></textarea>
     </div>
 
     <div class="mb-3">
