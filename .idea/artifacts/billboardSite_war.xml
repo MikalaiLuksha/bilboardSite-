@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="billboardSite:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>billboardSite</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="billboardSite.war">
+      <element id="artifact" artifact-name="billboardSite:war exploded" />
+    </root>
+  </artifact>
+</component>

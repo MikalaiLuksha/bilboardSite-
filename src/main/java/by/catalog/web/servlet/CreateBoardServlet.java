@@ -25,6 +25,7 @@ public class CreateBoardServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String[] userPerformers = req.getParameterValues("userPerformer");
+        String join = String.join(" ", userPerformers);
         String s = userPerformers.toString();
         long[] longs = userService.userIdFromCreateBoard(userPerformers);
         long[] longs1 = longs;
