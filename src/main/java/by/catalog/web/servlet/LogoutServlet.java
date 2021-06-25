@@ -14,6 +14,7 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().removeAttribute("currentUser");
         req.getSession().setAttribute("admin", false);
+        req.getSession().setAttribute("key1", false);
         resp.sendRedirect("/");
     }
 }
