@@ -14,10 +14,10 @@
                     <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
                             style="width: 220px">
-                        <c:if test="${!requestScope.key1}">
+                        <c:if test="${!sessionScope.key1}">
                             Enter or Registration
                         </c:if>
-                        <c:if test="${requestScope.key1}">
+                        <c:if test="${sessionScope.key1}">
                             ${sessionScope.currentUser.firstName}
                         </c:if>
                     </button>
@@ -41,7 +41,7 @@
 </nav>
 <div class="collapse" id="collapseExample">
     <div class="card card-body">
-        <c:if test="${!requestScope.key1}">
+        <c:if test="${!sessionScope.key1}">
             <form class="px-4 py-3" action="/auth" method="post">
                 <div class="mb-3">
                     <label for="exampleDropdownFormLogin" class="form-label">Login</label>
@@ -61,7 +61,7 @@
             <a class="dropdown-item" href="/reg">Registration</a>
             <a class="dropdown-item" href="#">Forgot password?</a>
         </c:if>
-        <c:if test="${requestScope.key1}">
+        <c:if test="${sessionScope.key1}">
             <a class="dropdown-item" href="/profiles">Profiles</a>
             <a class="dropdown-item" href="/logout">Logout</a>
         </c:if>

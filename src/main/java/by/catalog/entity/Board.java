@@ -27,4 +27,10 @@ public class Board {
         this.task = task;
         this.userId = userId;
     }
+
+    public Board(long id, String task, long[] userId) {
+        this.id = id;
+        this.task = task;
+        this.userId = userId;
+    }
 }
