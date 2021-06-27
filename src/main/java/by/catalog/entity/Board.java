@@ -33,4 +33,9 @@ public class Board {
         this.task = task;
         this.userId = userId;
     }
+
+    public Board(long id, String task) {
+        this.id = id;
+        this.task = task;
+    }
 }

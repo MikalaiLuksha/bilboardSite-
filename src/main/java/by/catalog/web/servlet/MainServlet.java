@@ -18,14 +18,13 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        User currentUser = (User) req.getSession().getAttribute("currentUser");
-        if (currentUser != null) {
-            BoardService boardService = new BoardService();
-            List<Board> boardList = boardService.returnBoardByIdUser(currentUser.getId());
-            List<Board> boardList1 = boardList;
-
-        }
+//        User currentUser = (User) req.getSession().getAttribute("currentUser");
+//        if (currentUser != null) {
+//            BoardService boardService = new BoardService();
+//            List<Board> boardList = boardService.returnBoardByIdUser(currentUser.getId());
+//        }
         req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
     }
 }
+
 
