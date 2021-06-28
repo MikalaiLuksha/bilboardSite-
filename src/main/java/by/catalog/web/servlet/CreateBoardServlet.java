@@ -20,6 +20,7 @@ import java.util.Locale;
 @WebServlet(urlPatterns = "/createBoard")
 public class CreateBoardServlet extends HttpServlet {
     UserService userService = new UserService();
+    BoardService boardService = new BoardService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,14 +32,13 @@ public class CreateBoardServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String[] userPerformers = req.getParameterValues("userPerformer");
-        Date date= new Date();
-        GregorianCalendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
         long[] longs = userService.userIdFromCreateBoard(userPerformers);
         String task = req.getParameter("task");
         Board board = new Board(task, longs);
+        Date date= new Date();
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
         board.setAddDate(calendar);
-        BoardService boardService = new BoardService();
         boardService.saveBoard(board);
         resp.sendRedirect("/createBoard");
 

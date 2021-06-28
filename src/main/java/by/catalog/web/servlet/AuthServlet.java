@@ -25,13 +25,16 @@ public class AuthServlet extends HttpServlet {
             if (currentUser.getRole().equals("admin")){
                 req.getSession().setAttribute("admin", true);
             }
-            req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
+//            req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
+            resp.sendRedirect("/");
+
         }
         else {
             String checkAuth = userService.checkLoginAndPassword(login, password);
             req.getSession().setAttribute("check", true);
             req.getSession().setAttribute("checkAuth", checkAuth);
-            req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
+//            req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
+            resp.sendRedirect("/");
 
         }
     }
