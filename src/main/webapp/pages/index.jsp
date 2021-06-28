@@ -69,10 +69,12 @@
 </div>
 
 
-<c:if test="${sessionScope.check}">
+<c:if test="${sessionScope.boardListKey}">
     <div class="card">
         <div class="card-body">
-                ${sessionScope.checkAuth}
+            <c:forEach items="${sessionScope.boardList}" var="item">
+                ${item}
+            </c:forEach>
         </div>
     </div>
 </c:if>

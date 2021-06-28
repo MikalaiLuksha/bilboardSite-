@@ -75,7 +75,6 @@ public class BoardStorage {
             while (resultSet.next()) {
                 long idBoardFromData = resultSet.getLong(1);
                 idList.add(idBoardFromData);
-                preparedStatement.execute();
             }
             connection.close();
             return idList;
@@ -95,8 +94,6 @@ public class BoardStorage {
             while (resultSet.next()) {
                 long idUserFromData = resultSet.getLong(2);
                 idList.add(idUserFromData);
-                preparedStatement.execute();
-
             }
             connection.close();
             return idList;
